@@ -15,11 +15,31 @@
 
 ## 快速开始
 
-### 1. 拿到程序
+### 1. 下载程序
 
-下载 `ofm-server.exe`，放到任意文件夹（比如 `D:\tools\ofm-server\`）。
+**下载地址：<https://github.com/Allentowns/ofm-server/releases/latest>**
 
-> 不需要安装 Node，不需要装任何东西。单个文件即可运行。
+打开后在 **Assets** 里点 `ofm-server.exe` 下载，放到任意文件夹（比如 `D:\tools\ofm-server\`）。
+
+> 不需要安装 Node，不需要装任何东西。单个文件即可运行（约 83 MB，体积基本是内嵌的 Node 运行时）。
+
+直接下载当前版本：
+
+| 文件 | 说明 |
+|---|---|
+| [`ofm-server.exe`](https://github.com/Allentowns/ofm-server/releases/download/v0.1.0/ofm-server.exe) | 主程序（Windows x64） |
+| [`ofm-server.exe.sha256`](https://github.com/Allentowns/ofm-server/releases/download/v0.1.0/ofm-server.exe.sha256) | 校验值 |
+
+**Windows 可能弹出 SmartScreen 警告，这是预期的。** 打包时把 Node 运行时注入 exe，会让 Node 自带的
+代码签名失效，而这个发布包没有商业代码签名证书。点「更多信息 → 仍要运行」即可，也可以自己核对校验值：
+
+```powershell
+Get-FileHash .\ofm-server.exe -Algorithm SHA256
+# 应为 95AF1EC1F7ED105868CA0D4CBC6CDB51567FF3702267C987E184ADBCF5146205
+```
+
+> 仓库是私有的。如果上面的链接打开是 404，说明当前 GitHub 账号没有访问权限，
+> 请联系仓库所有者把你加为协作者。
 
 ### 2. 双击运行
 
@@ -252,6 +272,8 @@ curl http://127.0.0.1:18900/v1/chat/completions \
 从源码运行：
 
 ```powershell
+git clone https://github.com/Allentowns/ofm-server.git
+cd ofm-server
 node server.mjs        # 需要 Node ≥ 20，无依赖
 npm test               # 49 项测试
 npm run build:exe      # 构建单文件 exe（Windows x64）
