@@ -5,6 +5,22 @@
   "type": "module",
   "description": "Local OpenAI-compatible server over the OpenCode / Kilo free model lanes, with a request-inspection web console.",
   "main": "./server.mjs",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Allentowns/ofm-server.git"
+  },
+  "homepage": "https://github.com/Allentowns/ofm-server#readme",
+  "bugs": {
+    "url": "https://github.com/Allentowns/ofm-server/issues"
+  },
+  "keywords": [
+    "openai-compatible",
+    "anthropic",
+    "llm",
+    "agent",
+    "proxy",
+    "free-models"
+  ],
   "scripts": {
     "start": "node server.mjs",
     "test": "node --test \"test/*.test.mjs\"",

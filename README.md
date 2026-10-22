@@ -1,5 +1,9 @@
 # ofm-server
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Node](https://img.shields.io/badge/node-%E2%89%A520-brightgreen.svg)](https://nodejs.org)
+[![Platform](https://img.shields.io/badge/platform-Windows%20x64-lightgrey.svg)](#1-下载程序)
+
 **不用登陆，运行即可：免费白嫖 OpenCode + Kilo 的模型，给任何 agent 用。**
 
 在你的电脑上跑一个小服务，它把上游的免费模型池包装成标准 OpenAI / Anthropic 接口。
@@ -38,8 +42,8 @@ Get-FileHash .\ofm-server.exe -Algorithm SHA256
 # 应为 95AF1EC1F7ED105868CA0D4CBC6CDB51567FF3702267C987E184ADBCF5146205
 ```
 
-> 仓库是私有的。如果上面的链接打开是 404，说明当前 GitHub 账号没有访问权限，
-> 请联系仓库所有者把你加为协作者。
+> 开源项目，代码在 [GitHub](https://github.com/Allentowns/ofm-server)。如果下载链接打不开，
+> 可以自己从源码构建（见文末）。
 
 ### 2. 双击运行
 
@@ -283,5 +287,17 @@ npm run build:exe      # 构建单文件 exe（Windows x64）
 
 ## 免责声明
 
-本工具只是客户端，不托管模型，也不提供模型能力。免费额度由 OpenCode 与 Kilo 单方面提供，
-请自行遵守各自的服务条款。请勿用于商业用途或任何违反上游条款的场景。
+本工具只是客户端，不托管模型，也不提供模型能力。它不包含、不代理、不转售任何模型服务，
+只是把上游公开提供的免费接口包装成标准协议。
+
+免费额度由 OpenCode 与 Kilo 单方面提供，与本项目无关。使用时请自行遵守各自的服务条款，
+包括但不限于频率限制、内容政策与商用限制。**因使用本工具导致的任何账号限制、服务中断或
+法律风险，由使用者自行承担。**
+
+本项目以 MIT 协议开源，不对适用性或特定用途作任何担保。
+
+## 许可
+
+[MIT](LICENSE) © 2026 Allentowns
+
+你可以自由使用、修改、分发、商用，唯一要求是保留版权声明与许可声明。
