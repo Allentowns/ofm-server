@@ -1,0 +1,9 @@
+data/
+shots/
+run.log
+run.err.log
+node_modules/
+test/debug.mjs
+dist/
+proxy.log
+proxy.err.log

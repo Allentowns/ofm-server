@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ofm-server 控制台</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header>
+  <h1>ofm-server</h1>
+  <span id="conn-badge" class="badge">…</span>
+</header>
+
+<main>
+  <!-- ============ 模型页（唯一主页面） ============ -->
+  <section id="tab-models">
+    <div class="card" id="quickstart">
+      <h2>快速接入</h2>
+      <div class="row"><label>Base URL</label><code id="qs-baseurl">…</code><span class="actions"><span class="icon-slot"></span><button class="copy" data-copy="#qs-baseurl">复制</button></span><span class="hint">OpenAI 兼容 - openai-completions</span></div>
+      <div class="row"><label>Base URL</label><code id="qs-baseurl-anthropic">…</code><span class="actions"><span class="icon-slot"></span><button class="copy" data-copy="#qs-baseurl-anthropic">复制</button></span><span class="hint">Anthropic 兼容 - anthropic-messages</span></div>
+      <div class="row"><label>API Key</label><code id="qs-key">…</code><span class="actions"><span class="icon-slot"></span><button class="copy" data-copy="#qs-key">复制</button><button id="toggle-key" class="eye" title="显示 Key" aria-label="显示 Key"></button></span></div>
+    </div>
+    <div class="card">
+      <div class="card-head">
+        <h2>模型清单 <span id="models-count" class="badge"></span></h2>
+      </div>
+      <p id="models-notice" class="notice hidden"></p>
+      <table id="models-table">
+        <thead><tr>
+          <th class="sortable" data-sort="id">模型 id<span class="sort-mark"></span></th>
+          <th class="sortable" data-sort="lane">供应商<span class="sort-mark"></span></th>
+          <th class="sortable col-status" data-sort="status">状态<span class="sort-mark"></span></th>
+          <th class="col-toolbar">
+            <span id="test-all-progress" class="muted"></span>
+            <button id="test-all" class="secondary">TEST ALL</button>
+          </th>
+        </tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <div class="card hidden" id="test-result-card">
+      <h2>测试结果 <span id="test-model-name" class="badge"></span></h2>
+      <pre id="test-result"></pre>
+    </div>
+  </section>
+
+  <!-- ============ 高级配置（默认折叠） ============ -->
+  <details id="dev-options" class="card">
+    <summary><h2>高级配置</h2></summary>
+
+    <div class="subcard">
+      <div class="subcard-head">
+        <h3>请求透视 log 详细</h3>
+        <label class="switch">
+          <input type="checkbox" id="insp-enabled">
+          <span class="slider"></span>
+        </label>
+      </div>
+      <p class="muted">默认关闭。开启后记录最近请求的入站 / 上游对照；仅存内存，关闭即清空。</p>
+      <div id="insp-body" class="hidden">
+        <div class="card-head">
+          <h4>请求记录 <span id="requests-count" class="badge"></span></h4>
+          <label class="muted"><input type="checkbox" id="auto-refresh" checked> 2s 自动刷新</label>
+        </div>
+        <table id="requests-table">
+          <thead><tr><th>#</th><th>时间</th><th>模型</th><th>车道</th><th>状态</th><th>耗时</th><th>TTFT</th><th>特征</th></tr></thead>
+          <tbody></tbody>
+        </table>
+        <div class="card hidden" id="request-detail">
+          <div class="card-head">
+            <h4>请求 #<span id="rd-id"></span></h4>
+            <button id="rd-close">关闭</button>
+          </div>
+          <div class="tri">
+            <div class="pane">
+              <h5>入站请求（agent 原生）<button class="icon-btn" data-copy-view="rd-native" title="复制入站请求" aria-label="复制入站请求">⧉</button></h5>
+              <div id="rd-native" class="jsonview"></div>
+            </div>
+            <div class="pane">
+              <h5>上游请求（转换后）<button class="icon-btn" data-copy-view="rd-upstream" title="复制上游请求" aria-label="复制上游请求">⧉</button></h5>
+              <div id="rd-upstream" class="jsonview"></div>
+              <div id="rd-transform"></div>
+            </div>
+            <div class="pane">
+              <h5>响应摘要<button class="icon-btn" data-copy-view="rd-response" title="复制响应摘要" aria-label="复制响应摘要">⧉</button></h5>
+              <div id="rd-response" class="jsonview"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subcard">
+      <div class="subcard-head">
+        <h3>代理</h3>
+        <label class="switch">
+          <input type="checkbox" id="px-enabled">
+          <span class="slider"></span>
+        </label>
+      </div>
+      <p class="muted">开启后，发给 OpenCode 与 Kilo 的请求先经过此处配置的代理。</p>
+      <div id="px-body" class="hidden">
+        <div class="row">
+          <label>代理地址</label>
+          <input type="text" id="px-url" placeholder="http://127.0.0.1:7890  或  http://user:pass@10.0.0.1:8080">
+        </div>
+        <div class="row">
+          <button id="px-save">保存并应用</button>
+          <button id="px-test">测试连通性</button>
+        </div>
+        <pre id="px-result" class="hidden"></pre>
+      </div>
+      <div id="px-routes" class="muted"></div>
+    </div>
+  </details>
+</main>
+
+<script src="/app.js?v=16"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

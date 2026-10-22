@@ -1,0 +1,17 @@
+{
+  "name": "ofm-server",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Local OpenAI-compatible server over the OpenCode / Kilo free model lanes, with a request-inspection web console.",
+  "main": "./server.mjs",
+  "scripts": {
+    "start": "node server.mjs",
+    "test": "node --test \"test/*.test.mjs\"",
+    "build:exe": "node scripts/build-exe.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "MIT"
+}
