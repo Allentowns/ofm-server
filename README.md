@@ -1,6 +1,6 @@
 # ofm-server
 
-**免费白嫖 OpenCode + Kilo 的模型，给任何 agent 用。**
+**不用登陆，运行即可：免费白嫖 OpenCode + Kilo 的模型，给任何 agent 用。**
 
 在你的电脑上跑一个小服务，它把上游的免费模型池包装成标准 OpenAI / Anthropic 接口。
 你的 agent（pi、Claude Code、Cline、Cursor、OpenAI SDK、curl……）只要把 base URL 指过来，
